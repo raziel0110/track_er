@@ -79,6 +79,9 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+  # https://trackers-app-76d9dc18a2c1.herokuapp.com/
+  config.action_mailer.default_url_options = { :host => "https://trackers-app-76d9dc18a2c1.herokuapp.com/" }
+  Rails.application.routes.default_url_options[:host] = 'https://trackers-app-76d9dc18a2c1.herokuapp.com/'
 
   # Enable DNS rebinding protection and other `Host` header attacks.
   # config.hosts = [
