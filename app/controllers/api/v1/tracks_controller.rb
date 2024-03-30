@@ -4,7 +4,7 @@ class Api::V1::TracksController < ApplicationController
   def index
     @tracks = Track.all
 
-    render json: {tracks: @tracks}, status: 200
+    render json: @tracks, each_serializer: TrackSerializer, status: :ok
   end
 
   def create
