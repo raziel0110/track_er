@@ -2,7 +2,7 @@ class Api::V1::TracksController < ApplicationController
   before_action :track, only: [:destroy]
 
   def index
-    @tracks = Track.all
+    @tracks = Track.sorting_latest
 
     render json: @tracks, each_serializer: TrackSerializer, status: :ok
   end
@@ -18,7 +18,9 @@ class Api::V1::TracksController < ApplicationController
   end
 
   def destroy
+    @track.destroy
 
+    render json: {message: 'Song deleted'}, status: :ok
   end
 
   private

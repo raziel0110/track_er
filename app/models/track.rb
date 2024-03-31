@@ -1,12 +1,14 @@
 class Track < ApplicationRecord
-  has_one_attached :filename
+  has_one_attached :filename, dependent: :purge
 
   before_save :setting_title
 
+  scope :sorting_latest, -> { order(created_at: :desc) }
+
   def setting_title
     raise "Cannot set title" unless self.filename.attached?
-    title = sanitize_title(self.filename.filename.base)
-    self.title = title
+
+    self.title = sanitize_title(self.filename.filename.base)
   end
 
   private
