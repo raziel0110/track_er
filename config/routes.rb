@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   namespace :api do
     namespace :v1 do
       resources :tracks, only: [:index, :create, :destroy]
+      resources :users, only: [:index, :create]
+
+
+      post 'auth/login', to: "authentication#login"
+
     end
   end
 
