@@ -1,4 +1,8 @@
 class Api::V1::TracksController < ApplicationController
+  before_action do
+    ActiveStorage::Current.host = request.base_url
+  end
+
   before_action :track, only: [:destroy]
 
   def index
