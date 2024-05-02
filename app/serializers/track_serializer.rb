@@ -1,7 +1,7 @@
 class TrackSerializer < ActiveModel::Serializer
   include Rails.application.routes.url_helpers
 
-  attributes :id, :title, :url, :content_type
+  attributes :id, :title, :url, :content_type, :blob
 
   def url
     # url_for(object.filename)
@@ -10,5 +10,9 @@ class TrackSerializer < ActiveModel::Serializer
 
   def content_type
     object.filename.content_type
+  end
+
+  def blob
+    object.filename.blob
   end
 end
