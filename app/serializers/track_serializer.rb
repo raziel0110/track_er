@@ -4,6 +4,7 @@ class TrackSerializer < ActiveModel::Serializer
   attributes :id, :title, :url, :content_type, :blob
 
   def url
+    Rails.logger.info("\n\n\n\n Filename: #{object.to_json} \n\n")
     url_for(object.filename)
     # Rails.application.routes.url_helpers.rails_blob_url(object.filename, only_path: true)
     # rails_blob_url(object.filename, only_path: true)
